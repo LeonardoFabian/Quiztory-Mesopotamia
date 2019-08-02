@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Hammurabi</string>
+
+    <string name="btn_entrar">ENTRAR</string>
+    <string name="btn_jugar">JUGAR</string>
+    <string name="btn_check">COMPROBAR</string>
+    <string name="btn_skip">OMITIR</string>
+    <string name="adios">Hasta la próxima</string>
+
+    <string name="description">descripcion</string>
+    <string name="label_pregunta">Pregunta:</string>
+
+    <string name="input_usuario">¿Cómo te llamas?</string>
+
+    <string name="et_jugador">Jugador:</string>
+    <string name="jugador">Jugador</string>
+    <string name="total_score">Score:</string>
+    <string name="score">0</string>
+    <string name="et_vidas">Vidas:</string>
+
+
+    <string name="respuesta">Respuesta</string>
+
+    <string name="correct">Respuesta correcta</string>
+    <string name="incorrect">Incorrecto!</string>
+    <string name="dos_vidas">Te quedan 2 vidas</string>
+    <string name="una_vida">Te queda 1 vida</string>
+    <string name="cero_vidas">Has agotado todas tus vidas</string>
+
+
+    <string name="question_content1">¿En que año llega al poder Hammurabi?</string>
+    <array name="answers_question1">
+        <item>2334 a.C.</item>
+        <item>1793 a.C.</item>
+        <item>2900 a.C.</item>
+    </array>
+    <integer name="correct_answer1">1</integer>
+
+    <string name="question_content2">¿Como se llama en la actualidad  el territorio donde estaba ubicada Mesopotamia?</string>
+    <array name="answers_question2">
+        <item>Iran</item>
+        <item>Israel</item>
+        <item>Irak</item>
+    </array>
+    <integer name="correct_answer2">2</integer>
+
+
+    <!--
+    <array name="all_questions">
+        <item>¿En que año llega al poder Hammurabi?;2334 a.C.;1793 a.C.;2900 a.C.;</item>
+        <item>¿Como se llama en la actualidad  el territorio donde estaba ubicada Mesopotamia?;Iran;Israel;*Irak;</item>
+        <item>¿Entre que ríos estaba ubicada mesopotamia?;*Tigris y Eufrates;Danubio y Sava;Nilo y Mar Rojo;</item>
+        <item>Mesopotamia es una palabra griega que significa:;Meseta extensa;Dos estrechos;*Tierra entre dos rios;</item>
+        <item>Mesopotamia es conocida como:;La Helade;*Cuna de la civilización;Grandes constructores;</item>
+    </array>
+    -->
+</resources>
