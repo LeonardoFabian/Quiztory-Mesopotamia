@@ -59,7 +59,7 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
 
 
         question = (TextView)findViewById(R.id.text_question);
-        question.setText(R.string.question_content1);
+        //question.setText(R.string.question_content1);
 
         String[] answers = getResources().getStringArray(R.array.answers_question1);
 
