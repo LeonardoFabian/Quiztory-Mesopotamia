@@ -22,8 +22,14 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
     String string_jugador, string_score, string_vidas;
     private TextView tv_nombre, tv_score;
     private ImageView iv_vidas;
-    private TextView question;
+    private TextView tv_question;
     private MediaPlayer mp, mp_great, mp_bad;
+    private int correct_answer;
+    private int current_question;
+    private String[] all_questions;
+    private boolean[] answers_correct;
+    private RadioGroup group;
+    private Button btn_check;
 
     private int ids_answers[] = {
             R.id.answer1, R.id.answer2, R.id.answer3
@@ -47,34 +53,29 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
         mp_great = MediaPlayer.create(this, R.raw.wonderful);
         mp_bad = MediaPlayer.create(this, R.raw.bad);
 
-
-
-
+        // REFERENCIAS
         tv_nombre = (TextView)findViewById(R.id.player);
         tv_score = (TextView)findViewById(R.id.score);
         iv_vidas = (ImageView)findViewById(R.id.vidas);
+        tv_question = (TextView)findViewById(R.id.text_question);
+        group = (RadioGroup)findViewById(R.id.respuestas);
+        btn_check = (Button)findViewById(R.id.btn_check);
 
         string_jugador = getIntent().getStringExtra("jugador");
         tv_nombre.setText(string_jugador);
 
-
-        question = (TextView)findViewById(R.id.text_question);
-        //question.setText(R.string.question_content1);
-
-        String[] answers = getResources().getStringArray(R.array.answers_question1);
-
-        //
-        for(int i = 0; i < ids_answers.length; i++){
-            RadioButton rb = (RadioButton)findViewById(ids_answers[i]);
-            rb.setText(answers[i]);
-        }
+        all_questions = getResources().getStringArray(R.array.all_questions);
+        answers_correct = new boolean[all_questions.length];
+        current_question = 0;
+        showQuestion();
 
         //numero respuesta correcta desde string
-        final int correct_answer1 = getResources().getInteger(R.integer.correct_answer1);
-        final RadioGroup group = (RadioGroup)findViewById(R.id.respuestas);
-        final Intent intent = new Intent(this, Main2Activity_Quiz2.class);
+        //final int correct_answer1 = getResources().getStringArray(R.integer.correct_answer1);
 
-        Button btn_check = (Button)findViewById(R.id.btn_check);
+        //final Intent intent = new Intent(this, Main2Activity_Quiz2.class);
+
+        // TODO: Me quede aqui, configurando que paa si es la ultima pregunta video youtube 49:00
+
         btn_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +89,10 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                         respuesta = i;
                     }
                 }
-                if(respuesta == correct_answer1){
+
+                answers_correct[current_question] = (respuesta == correct_answer);
+
+                if(respuesta == correct_answer){
                     mp_great.start();
                     int_score++;
                     String str_score = String.valueOf(int_score);
@@ -97,6 +101,7 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                     BaseDeDatos();
                     Toast.makeText(Main2Activity_Quiz1.this, R.string.correct, Toast.LENGTH_SHORT).show();
 
+                    /*
                     String string_score = String.valueOf(int_score);
                     String string_vidas = String.valueOf(int_vidas);
 
@@ -108,10 +113,12 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                     finish();
                     mp.stop();
                     mp.release();
+                    */
                 }else {
                     mp_bad.start();
                     int_vidas--;
                     BaseDeDatos();
+                    Toast.makeText(Main2Activity_Quiz1.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
 
                     switch(int_vidas){
                         case 3:
@@ -134,7 +141,10 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                             mp.release();
                             break;
                     }
-                    Toast.makeText(Main2Activity_Quiz1.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+                }
+                if(current_question < all_questions.length - 1){
+                    current_question++;
+                    showQuestion();
                 }
             }
         });
@@ -143,13 +153,47 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
         btn_skip.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mp.stop();
+                if(current_question < all_questions.length - 1){
+                    showQuestion();
+                }
+                /*mp.stop();
                 mp.release();
                 intent.putExtra("jugador", tv_nombre.getText().toString());
                 startActivity(intent);
                 finish();
+                */
             }
         });
+    }
+
+    private void showQuestion() {
+
+        // START PREGUNTA Y RESPUESTA
+        String question = all_questions[current_question];
+        String[] part_question = question.split(";");
+
+        group.clearCheck();
+
+        //question.setText(R.string.question_content1);
+        tv_question.setText(part_question[0]);
+
+        //String[] answers = getResources().getStringArray(R.array.answers_question1);
+
+        //mostrando las respuestas
+        for(int i = 0; i < ids_answers.length; i++){
+            RadioButton rb = (RadioButton)findViewById(ids_answers[i]);
+            String answer = part_question[i+1];
+            if(answer.charAt(0) == '*'){
+                correct_answer = i;
+                answer = answer.substring(1);
+            }
+            //rb.setText(answers[i]);
+            rb.setText(answer);
+        }
+        if(current_question == all_questions.length - 1){
+            btn_check.setText(R.string.btn_finish_attempt);
+        }
+        // END PREGUNTA Y RESPUESTA
     }
 
     //Insertar en la base de datos
@@ -172,9 +216,7 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
 
                 BD.update("puntaje", modificacion, "score=" + best_score, null);
             }
-
             BD.close();
-
         }else{
             ContentValues insertar = new ContentValues();
 

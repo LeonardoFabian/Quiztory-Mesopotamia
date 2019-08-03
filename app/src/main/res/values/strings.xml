@@ -5,6 +5,8 @@
     <string name="btn_jugar">JUGAR</string>
     <string name="btn_check">COMPROBAR</string>
     <string name="btn_skip">OMITIR</string>
+    <string name="btn_finish_attempt">FINALIZAR</string>
+
     <string name="adios">Hasta la próxima</string>
 
     <string name="description">descripcion</string>
@@ -27,7 +29,7 @@
     <string name="una_vida">Te queda 1 vida</string>
     <string name="cero_vidas">Has agotado todas tus vidas</string>
 
-
+<!--
     <string name="question_content1">¿En que año llega al poder Hammurabi?</string>
     <array name="answers_question1">
         <item>2334 a.C.</item>
@@ -43,15 +45,15 @@
         <item>Irak</item>
     </array>
     <integer name="correct_answer2">2</integer>
+-->
 
 
-    <!--
     <array name="all_questions">
-        <item>¿En que año llega al poder Hammurabi?;2334 a.C.;1793 a.C.;2900 a.C.;</item>
+        <item>¿En que año llega al poder Hammurabi?;2334 a.C.;*1793 a.C.;2900 a.C.;</item>
         <item>¿Como se llama en la actualidad  el territorio donde estaba ubicada Mesopotamia?;Iran;Israel;*Irak;</item>
         <item>¿Entre que ríos estaba ubicada mesopotamia?;*Tigris y Eufrates;Danubio y Sava;Nilo y Mar Rojo;</item>
         <item>Mesopotamia es una palabra griega que significa:;Meseta extensa;Dos estrechos;*Tierra entre dos rios;</item>
         <item>Mesopotamia es conocida como:;La Helade;*Cuna de la civilización;Grandes constructores;</item>
     </array>
-    -->
+
 </resources>

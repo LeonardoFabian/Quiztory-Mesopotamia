@@ -21,12 +21,13 @@ public class Main2Activity_Quiz2 extends AppCompatActivity {
     String string_jugador, string_score, string_vidas;
     private TextView tv_nombre, tv_score;
     private ImageView iv_vidas;
-    private TextView question;
+    private TextView tv_question;
     private MediaPlayer mp, mp_great, mp_bad;
 
     private int ids_answers[] = {
             R.id.answer1, R.id.answer2, R.id.answer3
     };
+    private int correct_answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,20 +61,36 @@ public class Main2Activity_Quiz2 extends AppCompatActivity {
 
 
 
-        question = (TextView)findViewById(R.id.text_question);
-        //question.setText(R.string.question_content1);
+        tv_question = (TextView)findViewById(R.id.text_question);
 
-        String[] answers = getResources().getStringArray(R.array.answers_question2);
+        String[] all_questions = getResources().getStringArray(R.array.all_questions);
+        String question = all_questions[1];
+        String[] part_question = question.split(";");
+        
+        //tv_question.setText(R.string.question_content1);
+        tv_question.setText(part_question[0]);
+
+        //String[] answers = getResources().getStringArray(R.array.answers_question2);
 
         //
         for(int i = 0; i < ids_answers.length; i++){
             RadioButton rb = (RadioButton)findViewById(ids_answers[i]);
-            rb.setText(answers[i]);
+            String answer = part_question[i+1];
+            if(answer.charAt(0) == '*'){
+                correct_answer = i;
+                answer = answer.substring(1);
+            }
+            //rb.setText(answers[i]);
+            rb.setText(answer);
         }
 
         //numero respuesta correcta desde string
-        final int correct_answer1 = getResources().getInteger(R.integer.correct_answer2);
+        //final int correct_answer1 = getResources().getInteger(R.integer.correct_answer2);
         final RadioGroup group = (RadioGroup)findViewById(R.id.respuestas);
+
+        // TODO: Al hacer clic en el boton debe pasar a la proxima pregunta
+        // TODO: Quitar el Toast de Correcto e incorrecto, solo dejar el sonido great o bad
+
         final Intent intent = new Intent(this, Main2Activity_Quiz3.class);
 
         Button btn_check = (Button)findViewById(R.id.btn_check);
@@ -90,7 +107,7 @@ public class Main2Activity_Quiz2 extends AppCompatActivity {
                         respuesta = i;
                     }
                 }
-                if(respuesta == correct_answer1){
+                if(respuesta == correct_answer){
                     mp_great.start();
                     int_score++;
                     String str_score = String.valueOf(int_score);
@@ -141,6 +158,8 @@ public class Main2Activity_Quiz2 extends AppCompatActivity {
                 }
             }
         });
+
+        // TODO: Arreglar boton omitir preguntas
 
         Button btn_skip = (Button)findViewById(R.id.btn_skip);
         btn_skip.setOnClickListener(new View.OnClickListener(){
