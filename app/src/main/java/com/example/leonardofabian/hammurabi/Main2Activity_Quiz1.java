@@ -212,7 +212,7 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
             if(int_score > best_score){
                 ContentValues modificacion = new ContentValues();
                 modificacion.put("nombre", string_jugador);
-                modificacion.put("nombre", int_score);
+                modificacion.put("score", int_score);
 
                 BD.update("puntaje", modificacion, "score=" + best_score, null);
             }
