@@ -156,12 +156,16 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                     }
                     String resultado = String.format("Correctas: %d -- Incorrectas: %d", correctas, incorrectas);
 
+                    String string_correctas = String.valueOf(correctas);
+                    String string_incorrectas = String.valueOf(incorrectas);
 
                     Intent intent = new Intent(Main2Activity_Quiz1.this, Main2Activity_Quiz3.class); //pasar al proximo activity
 
                     intent.putExtra("jugador", string_jugador);
                     intent.putExtra("score", string_score);
                     intent.putExtra("vidas", string_vidas);
+                    intent.putExtra("correctas", string_correctas);
+                    intent.putExtra("incorrectas", string_incorrectas);
 
                     startActivity(intent);
                     finish();
