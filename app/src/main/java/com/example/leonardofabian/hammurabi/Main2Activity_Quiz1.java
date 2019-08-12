@@ -29,11 +29,12 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
     private String[] all_questions;
     private boolean[] answers_correct;
     private RadioGroup group;
-    private Button btn_check;
+    private Button btn_check, btn_skip;
 
     private int ids_answers[] = {
             R.id.answer1, R.id.answer2, R.id.answer3
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,14 +143,30 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                             break;
                     }
                 }
+
+                // TODO: Hacer que al finalizar muestre una tabla de calificaciones
                 if(current_question < all_questions.length - 1){
                     current_question++;
                     showQuestion();
+                } else {
+                    int correctas = 0, incorrectas = 0;
+                    for (boolean b : answers_correct){
+                        if (b) correctas++;
+                        else incorrectas++;
+                    }
+                    String resultado = String.format("Correctas: %d -- Incorrectas: %d", correctas, incorrectas);
+
+                    Toast.makeText(Main2Activity_Quiz1.this, resultado, Toast.LENGTH_LONG).show();
+                    finish();
                 }
+                /*
+                for(int i = 0; i < answers_correct.length; i++){
+                    Log.i("Caso", String.format("Respuesta $d: %b", i, answers_correct[i]));
+                }*/
             }
         });
 
-        Button btn_skip = (Button)findViewById(R.id.btn_skip);
+        btn_skip = (Button)findViewById(R.id.btn_skip);
         btn_skip.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -189,6 +206,9 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
             }
             //rb.setText(answers[i]);
             rb.setText(answer);
+        }
+        if(current_question == all_questions.length - 1){
+            btn_skip.setVisibility(View.GONE);
         }
         if(current_question == all_questions.length - 1){
             btn_check.setText(R.string.btn_finish_attempt);

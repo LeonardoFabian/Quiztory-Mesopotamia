@@ -43,7 +43,7 @@ public class Main2Activity_Login extends AppCompatActivity {
         if(consulta.moveToFirst()){
             String temp_nombre = consulta.getString(0);
             String temp_score = consulta.getString(1);
-            tv_bestScore.setText("Record: " + temp_score + " " + temp_nombre);
+            tv_bestScore.setText("Record: " + temp_nombre + " (" + temp_score + " Puntos)");
             BD.close();
         } else {
             BD.close();
