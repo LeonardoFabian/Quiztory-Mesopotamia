@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">Hammurabi</string>
 
+    <string name="title_puntuacion">PUNTUACION:</string>
+
     <string name="btn_entrar">ENTRAR</string>
     <string name="btn_jugar">JUGAR</string>
     <string name="btn_check">COMPROBAR</string>
     <string name="btn_skip">OMITIR</string>
     <string name="btn_finish_attempt">FINALIZAR</string>
+    <string name="btn_home">VOLVER AL INICIO</string>
 
     <string name="adios">Hasta la próxima</string>
 

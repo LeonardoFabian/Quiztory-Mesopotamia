@@ -156,8 +156,20 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                     }
                     String resultado = String.format("Correctas: %d -- Incorrectas: %d", correctas, incorrectas);
 
+
+                    Intent intent = new Intent(Main2Activity_Quiz1.this, Main2Activity_Quiz3.class); //pasar al proximo activity
+
+                    intent.putExtra("jugador", string_jugador);
+                    intent.putExtra("score", string_score);
+                    intent.putExtra("vidas", string_vidas);
+
+                    startActivity(intent);
+                    finish();
+
+                    /*
                     Toast.makeText(Main2Activity_Quiz1.this, resultado, Toast.LENGTH_LONG).show();
                     finish();
+                    */
                 }
                 /*
                 for(int i = 0; i < answers_correct.length; i++){
@@ -209,9 +221,14 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
         }
         if(current_question == all_questions.length - 1){
             btn_skip.setVisibility(View.GONE);
+        } else {
+            btn_skip.setVisibility(View.VISIBLE);
         }
+
         if(current_question == all_questions.length - 1){
             btn_check.setText(R.string.btn_finish_attempt);
+        } else {
+            btn_check.setText(R.string.btn_check);
         }
         // END PREGUNTA Y RESPUESTA
     }
