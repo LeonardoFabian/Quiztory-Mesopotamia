@@ -63,7 +63,7 @@ public class Main2Activity_Login extends AppCompatActivity {
             mp.stop();
             mp.release();
 
-            Intent intent = new Intent(this, Main2Activity_Quiz1.class); //pasar al proximo activity
+            Intent intent = new Intent(Main2Activity_Login.this, Main2Activity_Quiz1.class); //pasar al proximo activity
 
             // Pasar el nombre de usuario
             intent.putExtra("jugador", nombre);

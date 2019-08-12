@@ -30,43 +30,33 @@
 
     <TextView
         android:id="@+id/tv_jugador"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="155dp"
-        android:layout_marginLeft="155dp"
-        android:layout_marginBottom="271dp"
-        android:text="TextView"
+        android:layout_marginBottom="189dp"
+        android:gravity="center"
+        android:text="@string/jugador"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tv_score"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="168dp"
-        android:layout_marginLeft="168dp"
-        android:layout_marginBottom="233dp"
-        android:text="TextView"
+        android:layout_marginBottom="133dp"
+        android:gravity="center"
+        android:text="@string/score"
         android:textColor="@android:color/background_light"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_titulo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginTop="108dp"
-        android:text="TextView"
+        android:layout_marginTop="68dp"
+        android:text="@string/title_puntuacion"
         android:textColor="@android:color/background_light"
         android:textSize="30sp" />
 
@@ -81,31 +71,4 @@
         android:textColor="@android:color/background_light"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/tv_correctas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="167dp"
-        android:layout_marginLeft="167dp"
-        android:layout_marginBottom="386dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/tv_incorrectas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="169dp"
-        android:layout_marginLeft="169dp"
-        android:layout_marginBottom="343dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp" />
 </RelativeLayout>

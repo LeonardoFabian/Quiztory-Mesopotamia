@@ -26,6 +26,8 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
     private MediaPlayer mp, mp_great, mp_bad;
     private int correct_answer;
     private int current_question;
+    private int correctas = 0;
+    private int incorrectas = 0;
     private String[] all_questions;
     private boolean[] answers_correct;
     private RadioGroup group;
@@ -149,13 +151,16 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
                     current_question++;
                     showQuestion();
                 } else {
-                    int correctas = 0, incorrectas = 0;
+
                     for (boolean b : answers_correct){
                         if (b) correctas++;
                         else incorrectas++;
                     }
+                    /*
                     String resultado = String.format("Correctas: %d -- Incorrectas: %d", correctas, incorrectas);
-
+*/
+                    String string_score = String.valueOf(int_score);
+                    String string_vidas = String.valueOf(int_vidas);
                     String string_correctas = String.valueOf(correctas);
                     String string_incorrectas = String.valueOf(incorrectas);
 
@@ -225,9 +230,10 @@ public class Main2Activity_Quiz1 extends AppCompatActivity {
         }
         if(current_question == all_questions.length - 1){
             btn_skip.setVisibility(View.GONE);
-        } else {
-            btn_skip.setVisibility(View.VISIBLE);
         }
+        /*else {
+            btn_skip.setVisibility(View.VISIBLE);
+        }*/
 
         if(current_question == all_questions.length - 1){
             btn_check.setText(R.string.btn_finish_attempt);

@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class Main2Activity_Quiz3 extends AppCompatActivity {
 
-    private TextView tvJugador, tvScore, tvTitle, tvCorrectas, tvIncorrectas;
-    String string_jugador, string_score, string_vidas, string_correctas, string_incorrectas;
+    private TextView tvJugador, tvScore, tvTitle;
+    String string_jugador, string_score, string_vidas;
     private MediaPlayer mp;
     private Button btnHome;
 
@@ -24,18 +24,14 @@ public class Main2Activity_Quiz3 extends AppCompatActivity {
         tvJugador = (TextView) findViewById(R.id.tv_jugador);
         tvScore = (TextView) findViewById(R.id.tv_score);
         tvTitle = (TextView) findViewById(R.id.tv_titulo);
-        tvCorrectas = (TextView)findViewById(R.id.tv_correctas);
-        tvIncorrectas = (TextView)findViewById(R.id.tv_incorrectas);
+
 
         tvTitle.setText(R.string.title_puntuacion);
         string_jugador = getIntent().getStringExtra("jugador");
         tvJugador.setText(string_jugador);
         string_score = getIntent().getStringExtra("score");
-        tvScore.setText(string_score);
-        string_correctas = getIntent().getStringExtra("correctas");
-        tvCorrectas.setText("Correctas: " + string_correctas);
-        string_incorrectas = getIntent().getStringExtra("incorrectas");
-        tvCorrectas.setText("Incorrectas: " + string_incorrectas);
+        tvScore.setText(string_score + " Puntos");
+
 
         //objeto media player
         mp = MediaPlayer.create(this, R.raw.goats); //pista
